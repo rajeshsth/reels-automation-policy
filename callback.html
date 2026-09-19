@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TikTok authorization complete | Reels Automation</title>
+    <style>
+      :root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #17212b; background: #f4f7fb; }
+      main { box-sizing: border-box; max-width: 680px; min-height: 100vh; margin: auto; padding: 72px 24px; }
+      h1 { font-size: 2rem; } p { font-size: 1.05rem; line-height: 1.65; }
+      code { display: block; overflow-wrap: anywhere; padding: 14px; background: #fff; border: 1px solid #ccd6e0; border-radius: 8px; }
+      .hidden { display: none; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>TikTok authorization complete</h1>
+      <p id="message">You may return to Reels Automation to finish connecting your account.</p>
+      <section id="error" class="hidden">
+        <p>TikTok returned an authorization error:</p>
+        <code id="error-value"></code>
+      </section>
+    </main>
+    <script>
+      const parameters = new URLSearchParams(window.location.search);
+      const error = parameters.get("error") || parameters.get("error_description");
+      if (error) {
+        document.querySelector("#message").textContent = "TikTok authorization was not completed.";
+        document.querySelector("#error-value").textContent = error;
+        document.querySelector("#error").classList.remove("hidden");
+      }
+    </script>
+  </body>
+</html>
